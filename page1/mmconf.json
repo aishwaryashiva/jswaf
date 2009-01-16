@@ -1,0 +1,12 @@
+{
+    "modules" :
+    [ 
+    {"id":"counter", "path":"counter", "conf":<?php include('moduleconf/counter.conf'); ?> },
+    { "id":"jstree", "path":"jstree", "conf":<?php include('moduleconf/jstree.conf'); ?> },
+    { "id":"fader", "path":"fader", "conf":<?php include('moduleconf/fader.conf'); ?> },
+    { "id":"scroller", "path":"scroller", "conf":<?php include('moduleconf/scroller.conf'); ?> }
+    ],
+    "noAjax" : "Sorry, your browser does not support Ajax. :(",
+    "status_error" :
+	"Ooops, we encountered an error! Try reloading the page... maybe that will work"
+}

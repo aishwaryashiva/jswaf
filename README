@@ -1,0 +1,55 @@
+NAMESPACE:              jscms_* for both php and js files. this applies only to global functions.
+
+/themes                 directory for all themes
+                        name of theme manager is (by convention) the same as that of the theme
+/modules                directory for all modules
+/page			generic name for a "page" (application view)
+
+THEME has:
+    1. an html page called "index.theme"
+    2. it must reference all its resources (css, js, imgs etc) via the relative path
+       "../themes/<theme-name>/". This is because the theme actually "executes" in the
+       page directory
+    3. It is essentially a php file, and it gets an object $pageconf, that contains configurable
+       stuff like header text, title of the page (<title>) etc.
+    4. It must include <?php jscms_include_common_js(); ?> in the header, and 
+       <?php jscms_include_mm(); ?> just before the end of </body>.
+    5. It must have an associated module having the same name as the theme that provides common
+       resources like "header", "body", "sidebar", "footer", "navbar", "navitem" etc to
+       other modules as part of its "productions".
+
+MODULE has:
+    1. id = ""
+	id == module_name
+	read only property, must not be modified.
+    2. init( conf )
+	@conf the configuration object that defines the characteristics of the module. 
+	does initialization (acquisition of resources etc)
+	does NOT start operation of the module! that is done by main().
+	RETURNS true on success, false on failure
+    3. main()
+	this starts the operation of the module
+	this must not fail! operation (acquiring resources etc) must be done in init(). main()
+	works as the GO button, and init() is the START button.
+	RETURNS nothing (always succeeds).
+    4. unload()
+	RETURNS true on success, false on failure
+    5. service_request( res )
+	@res the resource requested from the module
+	RETURNS resource object on success, null on failure
+    6. req = {}
+	read only property, must not be modified.
+    7. prod = {}
+	read only property, must not be modified.
+    
+FORMAT of PAGE:
+    1. page essentially is a directory in the root directory of Oyster, that has: index.php,
+       pageconf.json, mmconf.json, mmconf.js.php and all module config files (preferrably
+       in a separate directory called moduleconf/).
+    2. pageconf.json has page config stuff like the theme to use, header text, title of the
+       page etc.
+    3. mmconf.json has list of modules, their id and associated conf files. Note that the
+       theme manager module is automatically appended to this list by jscms_include_mm().
+       This file is parsed as php (its included in mmconf.js.php).
+    4. mmconf.js.php basically converts mmconf.json into the MM_conf js object.
+
