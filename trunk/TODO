@@ -1,0 +1,13 @@
+* standardize the format of a module
+* redesign the MM
+* Initialize each module in a separate activation ("thread") using setTimeout
+* Dynamic initialization of modules (related to point 3) : means there is a function that looks like " MM_init_module( m ) "
+* format of MM_conf, and whether CSS can be called in from the module
+* include popular libraries like jQuery in common.js -> AJAX request scheduler
+* explore the possibility of INCLUDING MODULE CODE in the page via PHP --> less ajax, more file size, php processes the page/mmconf.json
+
+AJAX req scheduler can also change the way module manager is implemented.
+
+* how to handle resource duplication? 
+
+* integration with Google Gears for applications with LARGE num of modules

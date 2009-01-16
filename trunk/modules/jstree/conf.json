@@ -1,0 +1,43 @@
+{
+    "draw_root" : false,
+    "margin" : 20,
+    "root" :
+{
+    "title":"Root",
+    "children" :
+    [
+        {
+            "title":"google",
+            "children":
+            [
+                { "title":"mail", "children":null, "type":"html", "link":"http://gmail.com/" },
+                { "title":"picasa", "children":null, "type":"js", "link":"alert('picasa')" }
+            ]
+        },
+        {
+            "title":"yahoo",
+            "children":
+            [
+                {
+                    "title":"mail",
+                    "children":
+                    [
+                        {"title":"new mail","children":null, "type":"js", "link":"alert('new mail')"}, 
+                        {"title":"old mail","children":null, "type":"js", "link":"alert('old mail')"} 
+                    ]
+                },
+                { "title":"search", "children":null, "type":"js", "link":"alert('less than google')" }
+            ]
+        },
+        {
+            "title":"micrsoft",
+            "children":
+            [
+                { "title":"word", "children":null, "type":"js", "link":"alert('openoffice')" },
+                { "title":"powerpoint", "children":null, "type":"js", "link":"alert('openoffice')" },
+                { "title":"excel", "children":null, "type":"js", "link":"alert('openoffice')" }
+            ]
+        }
+    ]
+}
+}
